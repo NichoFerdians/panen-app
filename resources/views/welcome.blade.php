@@ -9,6 +9,14 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.css">
+    <style>
+        .red {
+            background-color: red !important;
+        }
+        .blue {
+            background-color: blue !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -40,7 +48,21 @@
             }, {
                 field: 'hasil_panen.mentah',
                 title: 'Total Mentah'
-            }]
+            }],
+            rowStyle: function(row, index) {
+                var customClass = "";
+
+                if (row.user == 'subtotal') {
+                    customClass = 'blue';
+                }
+                if (row.user == 'grandtotal') {
+                    customClass = 'red';
+                }
+
+                return {
+                    classes: customClass
+                };
+            }
         })
     </script>
 </body>
